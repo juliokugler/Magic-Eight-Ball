@@ -54,6 +54,11 @@ const MagicEightBall = () => {
 
     return (
         <section className={styles.container}>
+            {isLoading && (
+                <div className={styles.loaderWrapper}>
+                    <div className={styles.loader}></div>
+                </div>
+            )}
             <img className={styles.logo} alt='8 ball' src={logo} />
             <section className={styles.questionPopup}>
                 <h3>Ask any question!</h3>
@@ -61,9 +66,7 @@ const MagicEightBall = () => {
                     <input className={styles.questionInput} type="text" name="question" />
                     <button type="submit">Ask</button>
                 </form>
-                {isLoading ? (
-                    <div className={styles.loader}></div>
-                ) : (
+                {!isLoading && (
                     <h2 className={`${styles.response} ${ballAnswer ? styles.visible : ''}`}>{ballAnswer}</h2>
                 )}
             </section>
